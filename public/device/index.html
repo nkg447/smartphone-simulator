@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Device</title>
+  </head>
+  <body>
+    <h3>Device</h3>
+    <p id="message">Place your mobile on a flat surface and hit caliberate.</p>
+    <button id="caliberate">caliberate</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+    <script>
+      window.onerror = (msg, url, lineNum) => {
+        document.getElementById("message").innerHTML = msg;
+      };
+      const socket = io();
+      let id = new URLSearchParams(window.location.search).get("id");
+      const lag = 5;
+      let i = 0;
+      socket.emit("device-connect", { id });
+      window.ondeviceorientationabsolute = (e) => {
+        document.getElementById("caliberate").onclick = () => {
+          socket.emit("device-caliberate", {
+            alpha: e.alpha,
+            beta: e.beta,
+            gamma: e.gamma,
+          });
+        };
+        i++;
+        if (i % lag == 0)
+          socket.emit("device-data", {
+            alpha: e.alpha,
+            beta: e.beta,
+            gamma: e.gamma,
+          });
+      };
+    </script>
+  </body>
+</html>
