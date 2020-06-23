@@ -22,6 +22,7 @@ io.on("connection", (socket) => {
   });
   socket.on("device-connect", (data) => {
     const id = data.id;
+    console.log("DEVICE_CONNECTED id - " + id);
     socket.on("device-data", (deviceData) => {
       const joinCode = `${id}-simulator`;
       io.to(joinCode).emit("simulator-data", deviceData);
