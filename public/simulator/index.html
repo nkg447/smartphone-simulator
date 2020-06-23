@@ -979,7 +979,9 @@
         }));
         document.getElementById("message").innerHTML =
           "Scan this QR code from your phone, or goto " +
-          `<a>${window.location.origin + "/device?id=" + id}</a>`;
+          `<a href="${window.location.origin + "/device?id=" + id}">${
+            window.location.origin + "/device?id=" + id
+          }</a>`;
       });
       socket.on("simulator-caliberate", (data) => {
         const { alpha, beta, gamma } = data;
