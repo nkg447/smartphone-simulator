@@ -4,13 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Device</title>
+    <style>
+      body {
+        background-color: #222831;
+        color: #ececec;
+        margin: 20px;
+        font-family: monospace;
+      }
+      #caliberate {
+        padding: 10%;
+        margin: 20px;
+        margin-top: 50%;
+        background-color: #f2a365;
+        color: #222831;
+        font-weight: bold;
+        text-align: center;
+        font-size: x-large;
+        box-shadow: 3px 6px 8px 1px rgb(236,236,236, 0.22);
+      }
+      #message{
+        font-size: larger;
+      }
+    </style>
   </head>
   <body>
-    <h3>Device</h3>
-    <p id="message">Place your mobile on a flat surface and hit caliberate.</p>
-    <button id="caliberate">caliberate</button>
+    <h2>Device</h2>
+    <p id="message">Place your mobile on a flat surface and hit caliberate.<br><br>Then see your phone's orientation on the simulator.</p>
+    <div id="caliberate">caliberate</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
     <script>
+      // forcing https
+      if (
+        location.protocol !== "https:" &&
+        location.hostname !== "127.0.0.1" &&
+        location.hostname !== "localhost"
+      ) {
+        location.replace(
+          `https:${location.href.substring(location.protocol.length)}`
+        );
+      }
       window.onerror = (msg, url, lineNum) => {
         document.getElementById("message").innerHTML = msg;
       };
