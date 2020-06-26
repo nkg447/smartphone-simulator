@@ -1,6 +1,8 @@
 # Smartphone Simulator
 Simulate your smartphone's orientation.<br/>
-Scan the code on https://smartphone-simulator.herokuapp.com/simulator (Open this link on a desktop) from your smartphone and you can see your phone's orientation on the simulator.
+Scan the code on https://smartphone-simulator.herokuapp.com/simulator (Open this link on a desktop) from your smartphone and you can see your phone's orientation on the simulator.<br/>
+
+<img src="https://raw.githubusercontent.com/nkg447/smartphone-simulator/master/screenshot/s1.png" width="500">
 
 ## Getting Started
 These instructions will help you get the project up and running on your local machine for development and testing purposes.
@@ -20,4 +22,4 @@ And thats it.
 
 ## Why?
 
-¯\\_(ツ)_/¯  (eeh...)
+`¯\_(ツ)_/¯`  (eeh...)
