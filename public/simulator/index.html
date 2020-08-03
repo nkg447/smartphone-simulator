@@ -8,7 +8,7 @@
   </head>
   <body>
     <p id="message"></p>
-    <img id="qr" />
+    <canvas id="qr"></canvas>
     <div id="tridiv">
       <div class="scene">
         <div class="shape cuboid-1 back">
@@ -958,7 +958,7 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
-    <script src="https://www.cssscript.com/demo/pure-javascript-qr-code-generator-qrious/dist/umd/qrious.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
       const socket = io();
       const phone = document.getElementsByClassName("scene")[0];
@@ -972,11 +972,11 @@
       socket.emit("simulation-connect", {});
       socket.on("simulation-id", (data) => {
         id = data.id;
-        var qr = (window.qr = new QRious({
+        var qr = new QRious({
           element: document.getElementById("qr"),
           size: 300,
           value: window.location.origin + "/device?id=" + id,
-        }));
+        });
         document.getElementById("message").innerHTML =
           "Scan this QR code from your phone, or goto " +
           `<a href="${window.location.origin + "/device?id=" + id}">${
