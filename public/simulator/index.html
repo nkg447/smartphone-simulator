@@ -1000,7 +1000,7 @@
         };
       });
       socket.on("simulator-data", (data) => {
-        document.getElementById("qr").style.display = "none";
+        document.getElementById("qr-code").style.display = "none";
         document.getElementById("message").style.display = "none";
         document.getElementById("message").innerHTML = JSON.stringify(data);
         const { alpha, beta, gamma } = data;
