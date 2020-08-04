@@ -7,8 +7,16 @@
     <title>Simulator</title>
   </head>
   <body>
-    <p id="message"></p>
-    <canvas id="qr"></canvas>
+    <header>
+      <h1>Smartphone Orientation Simulator</h1>
+    </header>
+    <div id="qr-code">
+      <h2>Scan this QR code from your phone.</h2>
+      <div class="qr-container">
+        <canvas id="qr"></canvas>
+        <p id="message"></p>
+      </div>
+    </div>
     <div id="tridiv">
       <div class="scene">
         <div class="shape cuboid-1 back">
@@ -976,12 +984,12 @@
           element: document.getElementById("qr"),
           size: 300,
           value: window.location.origin + "/device?id=" + id,
+          background: 'white',
+          foreground: '#222831'
         });
-        document.getElementById("message").innerHTML =
-          "Scan this QR code from your phone, or goto " +
-          `<a href="${window.location.origin + "/device?id=" + id}">${
-            window.location.origin + "/device?id=" + id
-          }</a>`;
+        document.getElementById("message").innerHTML = `<a href="${
+          window.location.origin + "/device?id=" + id
+        }">${window.location.origin + "/device?id=" + id}</a>`;
       });
       socket.on("simulator-caliberate", (data) => {
         const { alpha, beta, gamma } = data;
