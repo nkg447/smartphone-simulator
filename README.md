@@ -10,6 +10,8 @@ Scan the code on https://smartphone-simulator.herokuapp.com/simulator (Open this
 ## Getting Started
 These instructions will help you get the project up and running on your local machine for development and testing purposes.
 
+*Note - The mobile browser allows the access to sensors only for https urls.
+
 ### Prerequisites
 Install these softwares before going further - 
 * *Node*
