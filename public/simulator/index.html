@@ -968,7 +968,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
-      const socket = io();
+      const socket = io('http://localhost:4001');
       const phone = document.getElementsByClassName("scene")[0];
       let calibrateValues = { alpha: 0, beta: 0, gamma: 0 };
       let id = undefined;
