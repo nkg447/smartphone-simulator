@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "author": "Nikunj Gupta",
   "license": "ISC"
