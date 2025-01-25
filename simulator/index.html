@@ -993,15 +993,15 @@
       }
 
       function createQr(id) {
+        const url = `${window.location.href.substr(0, window.location.href.length-10)
+}device?id=${id}`
         var qr = new QRious({
           element: document.getElementById("qr"),
           size: 300,
-          value: window.location.origin + "/device?id=" + id,
+          value: url,
           background: "white",
           foreground: "#222831",
         });
-        const url = `${window.location.href.substr(0, window.location.href.length-10)
-}device?id=${id}`
         document.getElementById("message").innerHTML = `<a href="${url}">${url}</a>`;
       }
 
