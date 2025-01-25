@@ -23,7 +23,7 @@
         box-shadow: 3px 6px 8px 1px rgb(236, 236, 236, 0.22);
         user-select: none;
       }
-      #caliberate:active{
+      #caliberate:active {
         box-shadow: 0 0 0 0 transparent;
         transform: translateY(8px) translateX(6px);
       }
@@ -39,7 +39,12 @@
       see your phone's orientation on the simulator.
     </p>
     <div id="caliberate">caliberate</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+    <script
+      src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+      integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://raw.githack.com/nkg447/signallite/refs/heads/master/client.js"></script>
     <script>
       function onLoad() {
         // not smartphone
@@ -66,27 +71,46 @@
         window.onerror = (msg, url, lineNum) => {
           document.getElementById("message").innerHTML = msg;
         };
-        const socket = io();
         let id = new URLSearchParams(window.location.search).get("id");
         const lag = 5;
         let i = 0;
-        socket.emit("device-connect", { id });
-        window.ondeviceorientationabsolute = (e) => {
-          document.getElementById("caliberate").onclick = () => {
-            socket.emit("device-caliberate", {
-              alpha: e.alpha,
-              beta: e.beta,
-              gamma: e.gamma,
-            });
+        let client = null;
+        async function start() {
+          client = new WebRTCClient(
+            "https://signallite.onrender.com",
+            id,
+            (event) => {}
+          );
+          await client.createOffer();
+        }
+        start();
+        setTimeout(() => {
+          window.ondeviceorientationabsolute = (e) => {
+            document.getElementById("caliberate").onclick = () => {
+              const data = JSON.stringify({
+                type: "device-caliberate",
+                data: {
+                  alpha: e.alpha,
+                  beta: e.beta,
+                  gamma: e.gamma,
+                },
+              });
+              client.peerChannel.send(data);
+            };
+            i++;
+            if (i % lag == 0) {
+              const data = JSON.stringify({
+                type: "device-data",
+                data: {
+                  alpha: e.alpha,
+                  beta: e.beta,
+                  gamma: e.gamma,
+                },
+              });
+              client.peerChannel.send(data);
+            }
           };
-          i++;
-          if (i % lag == 0)
-            socket.emit("device-data", {
-              alpha: e.alpha,
-              beta: e.beta,
-              gamma: e.gamma,
-            });
-        };
+        }, 5000);
       }
       onLoad();
     </script>

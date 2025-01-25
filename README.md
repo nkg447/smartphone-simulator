@@ -3,7 +3,7 @@
        width="80" height="15" alt="WTFPL" /></a>
 # Smartphone Simulator
 Simulate your smartphone's orientation.<br/>
-Scan the code on https://smartphone-simulator.herokuapp.com/simulator (Open this link on a desktop) from your smartphone and you can see your phone's orientation on the simulator.<br/>
+Scan the code on https://smartphone-simulator.nikunjgupta.dev (Open this link on a desktop) from your smartphone and you can see your phone's orientation on the simulator.<br/>
 
 <img src="https://raw.githubusercontent.com/nkg447/smartphone-simulator/master/screenshot/simulator.gif">
 
