@@ -34,7 +34,7 @@ function createQr(id) {
 
 const channel = uuidv4();
 const client = new WebRTCClient(
-  "https://signallite.onrender.com",
+  "https://signallite.nikunjgupta.dev",
   channel,
   (event) => {
     const raw = JSON.parse(event.data);

@@ -28,7 +28,7 @@ function onLoad() {
   let i = 0;
   let client = null;
   client = new WebRTCClient(
-    "https://signallite.onrender.com",
+    "https://signallite.nikunjgupta.dev",
     id,
     (event) => {},
     () => {
