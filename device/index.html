@@ -81,7 +81,9 @@
             id,
             (event) => {}
           );
-          await client.createOffer();
+          setTimeout(() => {
+            client.createOffer();
+          }, 1000);
         }
         start();
         setTimeout(() => {

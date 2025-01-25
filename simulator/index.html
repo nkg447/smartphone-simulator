@@ -1000,9 +1000,9 @@
           background: "white",
           foreground: "#222831",
         });
-        document.getElementById("message").innerHTML = `<a href="${
-          window.location.origin + "/device?id=" + id
-        }">${window.location.origin + "/device?id=" + id}</a>`;
+        const url = `${window.location.href.substr(0, window.location.href.length-10)
+}device?id=${id}`
+        document.getElementById("message").innerHTML = `<a href="${url}">${url}</a>`;
       }
 
       async function start() {
