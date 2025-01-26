@@ -58,7 +58,7 @@ const client = new WebRTCClient(
       );
     }
   },
-  () => {}
+  (ignore) => {}
 );
 
 createQr(channel);

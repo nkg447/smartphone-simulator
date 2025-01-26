@@ -31,7 +31,7 @@ function onLoad() {
     "https://signallite.nikunjgupta.dev",
     id,
     (event) => {},
-    () => {
+    (channel) => {
       window.ondeviceorientationabsolute = (e) => {
         document.getElementById("caliberate").onclick = () => {
           const data = JSON.stringify({
@@ -42,7 +42,7 @@ function onLoad() {
               gamma: e.gamma,
             },
           });
-          client.peerChannel.send(data);
+          channel.send(data);
         };
         i++;
         if (i % lag == 0) {
@@ -54,7 +54,7 @@ function onLoad() {
               gamma: e.gamma,
             },
           });
-          client.peerChannel.send(data);
+          channel.send(data);
         }
       };
     }
