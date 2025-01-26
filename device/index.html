@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Device</title>
+    <style>
+      body {
+        background-color: #222831;
+        color: #ececec;
+        margin: 20px;
+        font-family: monospace;
+      }
+      #caliberate {
+        padding: 10%;
+        margin: 20px;
+        margin-top: 50%;
+        background-color: #f2a365;
+        color: #222831;
+        font-weight: bold;
+        text-align: center;
+        font-size: x-large;
+        box-shadow: 3px 6px 8px 1px rgb(236, 236, 236, 0.22);
+        user-select: none;
+      }
+      #caliberate:active {
+        box-shadow: 0 0 0 0 transparent;
+        transform: translateY(8px) translateX(6px);
+      }
+      #message {
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Device</h2>
+    <p id="message">
+      Place your mobile on a flat surface and hit caliberate.<br /><br />Then
+      see your phone's orientation on the simulator.
+    </p>
+    <div id="caliberate">caliberate</div>
+    <script
+      src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+      integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://raw.githack.com/nkg447/signallite/refs/heads/master/client.js"></script>
+    <script src="./device.js"></script>
+  </body>
+</html>
